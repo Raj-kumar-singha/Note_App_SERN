@@ -1,0 +1,37 @@
+body {
+  margin: 0;
+}
+:root {
+  background-color: rgb(79, 117, 104) !important;
+  color: white;
+}
+
+.popUp {
+  background-color: rgb(79, 117, 104) !important;
+}
+
+.mainheader {
+  position: fixed;
+  top: 0;
+  left: 0;
+  z-index: 1000;
+}
+
+.appbody {
+  margin-top: 65px;
+}
+
+.footer {
+  bottom: 0;
+  left: 0;
+  position: fixed;
+  width: 100%;
+  text-align: center;
+  padding: 1rem;
+  font-weight: 700;
+  background-color: transparent;
+}
+
+.Card {
+  z-index: 0;
+}
