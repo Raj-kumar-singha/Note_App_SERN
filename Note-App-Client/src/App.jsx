@@ -11,12 +11,10 @@ function App () {
   const [content, setContent] = useState('');
   const [showModal, setShowModal] = useState(false);
 
-  const api = 'http://localhost:8081';
-
   // Fetch notes
   const fetchNotes = async () => {
     try {
-      const response = await axios.get(`${api}/api/notes`);
+      const response = await axios.get(`${import.meta.env.VITE_API_URL}/api/notes`);
       const notesArray = Array.isArray(response.data.Note)
         ? response.data
         : response.data.Note;
@@ -34,14 +32,14 @@ function App () {
   const addNote = async () => {
     if (title.trim() && content.trim()) {
       try {
-        await axios.post(`${api}/api/notes`, {
+        await axios.post(`${import.meta.env.VITE_API_URL}/api/notes`, {
           title,
           content,
         });
         setShowModal(false);
         setTitle('');
         setContent('');
-        fetchNotes(); // Refetch notes after adding a new one
+        fetchNotes();
       } catch (error) {
         console.error('Error adding note:', error);
       }
@@ -51,8 +49,8 @@ function App () {
   // Delete a note
   const deleteNote = async (id) => {
     try {
-      await axios.delete(`${api}/api/notes/${id}`);
-      fetchNotes(); // Refetch notes after deleting a note
+      await axios.delete(`${import.meta.env.VITE_API_URL}/api/notes/${id}`);
+      fetchNotes();
     } catch (error) {
       console.error('Error deleting note:', error);
     }
